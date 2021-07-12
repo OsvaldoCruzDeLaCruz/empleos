@@ -43,4 +43,10 @@ public class UsuariosServiceJpa implements IntUsuariosService {
 		return repoUsuario.findAll().size();
 	}
 
+	@Override
+	public Integer calcularTotalEntidades() {
+		// TODO Auto-generated method stub
+		return repoUsuario.totalEntidades();
+	}
+
 }
