@@ -1,4 +1,4 @@
-package com.osvaldo.cruz.service;
+package com.osvaldo.cruz.service.db;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.osvaldo.cruz.model.Categoria;
 import com.osvaldo.cruz.repository.CategoriasRepository;
+import com.osvaldo.cruz.service.IntCategoriasService;
 
 @Service
 @Primary

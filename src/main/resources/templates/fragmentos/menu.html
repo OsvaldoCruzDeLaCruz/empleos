@@ -11,22 +11,30 @@
             <li class="nav-item">
               <a class="nav-link active" th:href="@{/}">Inicio</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('Supervisor','Administrador')">
               <!--<a class="nav-link" th:href="@{/categorias/index}">Categorias</a>-->
               <a class="nav-link" th:href="@{/categorias/indexPaginado}">Categorias</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" sec:authorize="hasAnyAuthority('Supervisor','Administrador')">
           <!--    <a class="nav-link" th:href="@{/vacantes/index}">Vacantes</a> -->
           <a class="nav-link" th:href="@{/vacantes/indexPaginado}">Vacantes</a>
             </li>
-              <li class="nav-item">      
+              <li class="nav-item" sec:authorize="hasAnyAuthority('Administrador')">      
               <a class="nav-link" th:href="@{/perfiles/index}">Perfiles</a>
             </li>  
-            <li class="nav-item">      
+            <li class="nav-item" sec:authorize="hasAnyAuthority('Administrador')">      
               <a class="nav-link" th:href="@{/usuarios/indexPaginado}">Usuarios</a>
             </li>          
           </ul>  
-          <a class="btn bg-light text-dark" href="#">Ingresar</a>&nbsp;
-          <a class="btn bg-light text-dark" th:href="@{/registro}">Registrarse</a>
+          <div sec:authorize="isAnonymous()">
+          <a class="btn bg-light text-dark" th:href="@{/index}">Ingresar</a>&nbsp;
+          <a class="btn bg-light text-dark" th:href="@{/registro}">Registrarse</a>&nbsp;
+          </div>
+          <!--<span th:if="${session.usuario != null}" class="text-light" th:text="'Bienvenido: ' + ${session.usuario.nombre}"></span>&nbsp;-->
+          <div sec:authorize="isAuthenticated()">
+          <span class="text-light">Bienvenido: </span>&nbsp;<span class="text-light" sec:authentication="name"></span>&nbsp;
+          <a class="btn bg-light text-dark" th:href="@{/logout}">Salir</a>
+          </div>
+          
         </div>
       </nav>

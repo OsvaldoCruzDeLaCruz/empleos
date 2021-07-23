@@ -31,7 +31,7 @@
             <a class="btn btn-secondary text-white" 
             th:href="@{/categorias/crear}" role="button"><i class="fas fa-file" aria-hidden="true"></i> Nueva</a>            
             <hr style="border:0px">
-            
+                      
             <div class="alert alert-success" role="alert"
             th:if="${msg != null}"
             th:text="${msg}">
@@ -68,7 +68,7 @@
             </table>
             
             <nav th:if="${categorias.totalPages > 0}" aria-label="Page navigation example" >
-        <ul class="pagination justify-content-center">
+        	<ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${categorias.number == 0 ? 'disabled' : ''}">
                 <a th:href="@{/categorias/indexPaginado(page=${categorias.number - 1})}" class="page-link">Anterior</a>
             </li>

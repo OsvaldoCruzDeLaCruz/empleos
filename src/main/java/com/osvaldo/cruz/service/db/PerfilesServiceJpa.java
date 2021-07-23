@@ -1,4 +1,4 @@
-package com.osvaldo.cruz.service;
+package com.osvaldo.cruz.service.db;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.osvaldo.cruz.model.Perfil;
 import com.osvaldo.cruz.model.Vacante;
 import com.osvaldo.cruz.repository.PerfilesRepository;
+import com.osvaldo.cruz.service.IntPerfilesService;
 
 @Service
 @Primary

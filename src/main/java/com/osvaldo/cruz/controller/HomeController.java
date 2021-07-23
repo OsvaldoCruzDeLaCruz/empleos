@@ -3,7 +3,12 @@ package com.osvaldo.cruz.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,14 +24,37 @@ import com.osvaldo.cruz.service.IntVacantesService;
 public class HomeController {
 	
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
 	private IntUsuariosService usuarioService;
 	
 	@Autowired
 	private IntVacantesService vacantesService;
+	
+	@GetMapping("/index")
+	public String mostrarIndex(Authentication auth, HttpSession session) {
+		String username = auth.getName();
+//		Obtener el usuario actual
+		
+		System.out.println("Usuario " + username);
+		for(GrantedAuthority rol:auth.getAuthorities()) {
+			System.out.println("Rol " + rol.getAuthority());
+		}
+		if(session.getAttribute("usuario") == null) { 		
+		Usuario usuario = usuarioService.buscarPorUsername(username);
+		session.setAttribute("usuario", usuario);
+		usuario.setPassword(null);
+		}
+		return "redirect:/";
+		
+	}
 
 	@PostMapping("/guardar")
 	public String guardarUsuario(Usuario usuario) {
-		
+//		indicamos que la contrasena esta encriptada
+//		usuario.setPassword("{noop}" + usuario.getPassword());
+		usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		usuario.setEstatus(1);
 		usuario.setFechaRegistro(LocalDate.now());
 		

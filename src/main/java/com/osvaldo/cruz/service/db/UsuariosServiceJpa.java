@@ -1,4 +1,4 @@
-package com.osvaldo.cruz.service;
+package com.osvaldo.cruz.service.db;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.osvaldo.cruz.model.Usuario;
 import com.osvaldo.cruz.repository.UsuariosRepository;
+import com.osvaldo.cruz.service.IntUsuariosService;
 
 @Service
 public class UsuariosServiceJpa implements IntUsuariosService {
@@ -48,5 +49,13 @@ public class UsuariosServiceJpa implements IntUsuariosService {
 		// TODO Auto-generated method stub
 		return repoUsuario.totalEntidades();
 	}
+
+	@Override
+	public Usuario buscarPorUsername(String username) {
+		// TODO Auto-generated method stub
+		return repoUsuario.findByUsername(username);
+	}
+
+
 
 }

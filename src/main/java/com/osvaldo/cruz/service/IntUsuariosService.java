@@ -17,6 +17,6 @@ public interface IntUsuariosService {
 	public Integer numeroEntidades();
 	
 	public Integer calcularTotalEntidades();
-	
+	public Usuario buscarPorUsername(String username);
 	
 }
