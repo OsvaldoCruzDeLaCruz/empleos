@@ -28,7 +28,7 @@
 
         <div class="card">
           <div class="card-body">
-            <form  class="form-signin">
+            <form  class="form-signin" method="post" th:action="@{/login}">
               <div class="row">
                 <div class="col-md-4"> 
                 </div>  
@@ -60,7 +60,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../recursos/static/bootstrap/js/jquery-3.5.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script th:src="@{bootstrap/js/bootstrap.min.js}"></script>     
   </body>
 </html>

@@ -3,16 +3,20 @@ package com.osvaldo.cruz.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.osvaldo.cruz.model.Perfil;
 import com.osvaldo.cruz.model.Usuario;
@@ -31,6 +35,19 @@ public class HomeController {
 	
 	@Autowired
 	private IntVacantesService vacantesService;
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request){
+	SecurityContextLogoutHandler logoutHandler =
+	new SecurityContextLogoutHandler();
+	logoutHandler.logout(request, null, null);
+	return "redirect:/";
+	}
+	
+	@GetMapping("/login")
+	public String mostrarLogin() {
+		return "formLogin";
+	}
 	
 	@GetMapping("/index")
 	public String mostrarIndex(Authentication auth, HttpSession session) {
@@ -65,9 +82,7 @@ public class HomeController {
 		usuario.agregar(per);
 		usuarioService.guardar(usuario);
 		return "formLogin";
-		
-		
-		
+			
 	}
 	
 	@GetMapping("/registro")
@@ -81,5 +96,12 @@ public class HomeController {
 		model.addAttribute("vacantes",vacantes);		
 		return "home";
 	}
+	
+	@GetMapping("/bcript/{texto}")
+	@ResponseBody
+	public String encriptar(@PathVariable("texto")String texto) {
+		return "Contraseña Encriptada" + passwordEncoder.encode(texto);
+	}
+	
 
 }
