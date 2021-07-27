@@ -1,4 +1,4 @@
-package com.octavio.mancillaco;
+package com.osvaldo.cruzdlc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
