@@ -46,10 +46,10 @@ public class DatabaseWebSecurity extends WebSecurityConfigurerAdapter {
 	"/bcript/**",
 	"/vacantes/detalles/**").permitAll()
 	// Asignar permisos a URLs por ROLES
-	.antMatchers("/vacantes/**").hasAnyAuthority("Supervisor","Administradoor")
-	.antMatchers("/categorias/**").hasAnyAuthority("Supervisor","Administradoor")
-	.antMatchers("/perfiles/**").hasAnyAuthority("Administradoor")
-	.antMatchers("/usuarios/**").hasAnyAuthority("Administradoor")
+	.antMatchers("/vacantes/**").hasAnyAuthority("Supervisor","Administrador")
+	.antMatchers("/categorias/**").hasAnyAuthority("Supervisor","Administrador")
+	.antMatchers("/perfiles/**").hasAnyAuthority("Administrador")
+	.antMatchers("/usuarios/**").hasAnyAuthority("Administrador")
 	
 	// Todas las demás URLs de la Aplicación requieren autenticación
 	.anyRequest().authenticated()
