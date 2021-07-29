@@ -11,6 +11,6 @@ public interface UsuariosRepository extends JpaRepository<Usuario, Integer> {
 		
 	
 	
-	@Query(value="select count(*) from usuarios", nativeQuery=true)
+	@Query(value="select count(*) from Usuarios", nativeQuery=true)
 	Integer totalEntidades();
 }
