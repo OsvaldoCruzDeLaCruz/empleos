@@ -57,7 +57,7 @@ public class PerfilesController {
 			RedirectAttributes atributo) {		
 		atributo.addFlashAttribute("msg", "Perfil eliminado");
 		perfilesService.eliminar(idPerfil);
-		return "redirect:/perfiles/index";
+		return "redirect:/perfiles/listaPerfiles";
 		
 	}
 	
