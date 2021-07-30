@@ -10,7 +10,6 @@ public interface UsuariosRepository extends JpaRepository<Usuario, Integer> {
 	Usuario findByUsername(String username);
 		
 	
-	
 	@Query(value="select count(*) from Usuarios", nativeQuery=true)
 	Integer totalEntidades();
 }
