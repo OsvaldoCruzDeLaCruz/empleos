@@ -19,6 +19,7 @@ import com.osvaldo.cruz.service.IntCategoriasService;
 @RequestMapping("/categorias")
 public class CategoriasController {
 	
+	
 	//Instancia inyectada
 	@Autowired
 	private IntCategoriasService categoriasService;
